@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:06:20 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/18 22:48:00 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:18:11 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char	*get_next_line(int fd);
 int		ft_printf(const char *str, ...);
+int ft_strcmp(const char *s1, const char *s2);
+int	ft_atoi_hexa(char *str);
 
 #endif
