@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:56:01 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/23 15:31:47 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:53:15 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,11 +155,12 @@ static void	center_to_origin(t_map *map)
 	}
 }
 
+
 void	init_coordinates(t_map *map, char *map_line)
 {
 	initial_malloc(map);
 	get_pts(map, map_line);
-	center_to_oring(map);
+	center_to_origin(map);
 	// print_coordinates(map);
 }
 

@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cam_func.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 17:32:47 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/23 18:11:03 by lsilva-x         ###   ########.fr       */
+/*   Created: 2025/01/23 17:22:37 by lsilva-x          #+#    #+#             */
+/*   Updated: 2025/01/23 17:32:39 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fdf.h"
 
-int main(int argc, char **argv)
+void	init_cam(t_mlx *mlx,  t_cam *cam)
 {
-	char	*map_path;
-	t_mlx	*mlx;
-	
-	if (argc != 2)
-		error_exit(ERR_AMOUNT_ARGS);
-	map_path = argv[1];
-	mlx = init_fdf(map_path);
-	init_win(mlx);
-	init_cam(mlx, &mlx->cam);
-	mlx_loop(mlx->mlx);
-	return (0);
+	cam->projection = 1; //ISOMETRIC
+	cam->scale_factor = (WIN_WIDTH / (float)mlx->map.max_x + WIN_HEIGHT / (float)mlx->map.max_y) / 2;
+	cam->move_x = WIN_WIDTH / 2;
+	cam->move_y = WIN_HEIGHT / 2;
+	cam->alpha = 0; // X
+	cam->beta = 0; // Y
+	cam->gamma = 0; // Z
 }
