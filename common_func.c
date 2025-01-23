@@ -6,13 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:35:15 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/22 18:08:01 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:24:55 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fdf.h"
 
-int	error_exit(const char *err_msg)
+int	error_exit(char *err_msg)
 {
 	ft_printf("%s\n", err_msg);
 	exit (EXIT_FAILURE);

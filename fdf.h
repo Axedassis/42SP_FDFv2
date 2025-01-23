@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:33:15 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/22 20:16:21 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:24:03 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@
 |_|  \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
                                             
 */
-int		error_exit(const char *err_msg);
-t_mlx	*init_fdf(const char *f_name);
-const char	*init_map(t_mlx *mlx, const char *map_path);
-void	check_path(const char *f_name);
+int		error_exit(char *err_msg);
+t_mlx	*init_fdf(char *f_name);
+char	*init_map(t_mlx *mlx, char *map_path);
+void	check_path(char *f_name);
 char	*read_map(t_mlx *mlx, int fd);
-void	set_dimensions(t_map *map, const char *row_map);
-int		get_row_length(const char *str);
-int		get_columns_heigth(const char *str);
-void	init_coordinates(t_map *map, const char *map_line);
+void	set_dimensions(t_map *map, char *row_map);
+int		get_row_length(char *str);
+int		get_columns_heigth(char *str);
+void	init_coordinates(t_map *map, char *map_line);
 
 # endif

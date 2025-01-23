@@ -6,16 +6,16 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:37:15 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/22 20:19:07 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:23:54 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fdf.h"
 
-t_mlx	*init_fdf(const char *map_path)
+t_mlx	*init_fdf(char *map_path)
 {
 	t_mlx	*mlx;
-	const char	*map_line;
+	char	*map_line;
 
 	mlx = (t_mlx *)malloc(1 * sizeof(t_mlx));
 	if (!mlx)

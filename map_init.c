@@ -6,13 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:39:22 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/22 20:15:55 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:25:09 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./fdf.h"
 
-void	check_path(const char *f_name)
+void	check_path(char *f_name)
 {
 	int		i;
 
@@ -49,7 +49,7 @@ char *read_map(t_mlx *mlx, int fd)
 	return (str);
 }
 
-int	get_row_length(const char *str)
+int	get_row_length(char *str)
 {
 	int		rows;
 	int		i;
@@ -66,7 +66,7 @@ int	get_row_length(const char *str)
 	return (rows);
 }
 
-int	get_columns_heigth(const char *str)
+int	get_columns_heigth(char *str)
 {
 	int		columns;
 	int		i;
@@ -85,7 +85,7 @@ int	get_columns_heigth(const char *str)
 	return (columns);
 }
 
-void	set_dimensions(t_map *map,const char *map_path)
+void	set_dimensions(t_map *map, char *map_path)
 {
 	int		max_width;
 	int		max_heigth;
@@ -96,9 +96,9 @@ void	set_dimensions(t_map *map,const char *map_path)
 	map->max_y = max_heigth;
 }
 
-const char	*init_map(t_mlx *mlx, const char *map_path)
+char	*init_map(t_mlx *mlx, char *map_path)
 {
-	const char	*map_line;
+	char	*map_line;
 	int		fd;
 
 	fd = open(map_path, O_RDONLY);

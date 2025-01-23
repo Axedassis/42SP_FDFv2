@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:56:01 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/22 20:30:01 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:31:47 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void reset(t_point *crr_pts)
 	crr_pts->z = 0;
 	crr_pts->color = 0;
 }
+
 static void initial_malloc(t_map *map)
 {
 	t_point **pts_l;
@@ -30,10 +31,10 @@ static void initial_malloc(t_map *map)
 	pts_l = malloc(map->max_x * sizeof(t_point *));
 	if (!pts_l)
 		error_exit(ERR_MALLOC);
-	while (++x < map->max_x)
+	while (++x < map->max_x )
 	{
 		pts_l[x] = malloc(map->max_y * sizeof(t_point));
-		if (!pts_l[x])
+		if (!pts_l[x])	
 		{
 			while (--x >= 0)
 				free(pts_l[x]);
@@ -72,57 +73,52 @@ static int	increase_ptr(int crr_n)
 	return (i);
 }
 
+static void set_color(char **str, t_point *ptr)
+{
+	*str += 3;
+	ptr->color = ft_atoi_hexa(*str);
+	while (**str != ' ' && **str && **str != '\n')
+		(*str)++;
+}
+
 static void	set_pt(char **str, int origin_x, int origin_y, t_point *ptr)
 {
 	ptr->x = origin_x;
 	ptr->y = origin_y;
 	ptr->z = ft_atoi(*str);
-	if (ptr->z <= 0)
+	if (ptr->z == 0)
 		ptr->color = 0xFFFFFF;
-	else
-		ptr->color = 0xFFFFF + (8352782 * ptr->z);
+	// else
+	// 	ptr->color = 0xFFFFF + (8352782 * ptr->z);
 	*str += increase_ptr(ptr->z);
 }
 
-static void set_color(char **str, t_point *ptr)
+void	get_pts(t_map *map, char *map_line)
 {
-	*str += 3;
-	ptr->color = ft_atoi_hexa(*str);
-	while (**str != ' ' && **str != 0 && **str != '\n')
-		*str = *str + 1;
-}
+	int		pt_i;
+	int		coord[2];
 
-void	get_pts(t_map *map, const char *map_line)
-{
-	int		i;
-	int		j;
-	int		x;
-	int		y;
-
-	x = 0;
-	y = 0;
-	i = 0;
-	j = 0;
-	while (map_line[j])
+	pt_i = 0;
+	coord[0] = 0; // x
+	coord[1] = 0; // y
+	while (*map_line)
 	{
-		if (map_line[j] == '-' || (map_line[j] >= '0' && map_line[j] <= '9'))
+		if (*map_line == '-' || (*map_line >= '0' && *map_line <= '9'))
 		{
-			set_pt((char **)&map_line[j], x, y, map->pts[i]);
-			x++;
-			i++;
-			while (map_line[j] && map_line[j] != ' ' && map_line[j] != ',')
-				j++;
+			set_pt(&map_line, coord[0], coord[1], &map->pts[coord[1]][coord[0]]);
+			coord[0] = coord[0] + 1;
+			pt_i++;
 		}
-		else if (map_line[j] == ',')
-			set_color((char **)&map_line[j], map->pts[i - 1]);
-		else if (map_line[j] == '\n')
+		else if (*map_line == ',')
+			set_color(&map_line, &map->pts[coord[1]][coord[0] - 1]);
+		else if (*map_line == '\n')
 		{
-			x = 0;
-			y++;
-			j++;
+			coord[0] = 0;
+			coord[1] += 1;
+			map_line++;
 		}
-		else if(map_line[j] == ' ')
-			j++;
+		else if(*map_line == ' ')
+			map_line++;
 	}
 }
 
@@ -135,16 +131,36 @@ static void print_coordinates(t_map *map)
 		for (y = 0; y < map->max_y; y++)
 		{
 			printf("Point (%d, %d): x = %d, y = %d, z = %d, color = %#x\n",
-				   x, y, map->pts[x][y].x, map->pts[x][y].y, map->pts[x][y].z, map->pts[x][y].color);
+				x, y, map->pts[x][y].x, map->pts[x][y].y, map->pts[x][y].z, map->pts[x][y].color);
 		}
 	}
 }
 
-void	init_coordinates(t_map *map, const char *map_line)
+static void	center_to_origin(t_map *map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < map->max_y)
+	{
+		x = 0;
+		while (x < map->max_x)
+		{
+			map->pts[x][y].x -= map->max_x / 2;
+			map->pts[x][y].y -= map->max_y / 2;
+			x++;
+		}
+		y++;
+	}
+}
+
+void	init_coordinates(t_map *map, char *map_line)
 {
 	initial_malloc(map);
 	get_pts(map, map_line);
-	print_coordinates(map);
+	center_to_oring(map);
+	// print_coordinates(map);
 }
 
 
