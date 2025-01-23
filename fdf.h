@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:33:15 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/23 14:24:03 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:51:04 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,9 @@ void	set_dimensions(t_map *map, char *row_map);
 int		get_row_length(char *str);
 int		get_columns_heigth(char *str);
 void	init_coordinates(t_map *map, char *map_line);
+void	init_win(t_mlx *mlx);
+void	init_cam(t_mlx *mlx, t_cam *cam);
+int		destroy_win(t_mlx *mlx);
+int		key_hook(int keysym, t_mlx *mlx);
 
 # endif

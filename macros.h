@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:50:22 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/22 18:03:14 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:30:27 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,18 @@
 #define ERR_GNL "[Error]: GNL had an error"
 #define ERR_MLX_INIT "[Error]: Unable to initialize MLX"
 #define ERR_MLX_WIN "[Error]: Unable to initialize WIN from MLX"
+
+/*
+  ___ ___  _ __ ___  _ __ ___   ___  _ __  
+ / __/ _ \| '_ ` _ \| '_ ` _ \ / _ \| '_ \ 
+| (_| (_) | | | | | | | | | | | (_) | | | |
+\___\___/|_| |_| |_|_| |_| |_|\___/|_| |_|
+*/
+
+#define WIN_WIDTH 1200
+#define WIN_HEIGHT 900
+#define WIN_NAME "FDF"
+
 /*
      _                   _   
     | |                 | |  
@@ -52,21 +64,21 @@ typedef struct s_point
 	int		color;
 }	t_point;
 
-typedef struct s_line
-{
-	t_point	start;
-	t_point	end;
-	float	transform_z;
-}	t_line;
+// typedef struct s_line
+// {
+// 	t_point	start;
+// 	t_point	end;
+// 	float	transform_z;
+// }	t_line;
 
 typedef struct s_img
 {
-	void	*img;
-	char	*buffer;
+	void	*img_ptr;
+	char	*addr;
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
-	t_line	*line;
+	// t_line	*line;
 }	t_img;
 
 typedef struct s_map
@@ -78,12 +90,26 @@ typedef struct s_map
 	int			min_y;
 }	t_map;
 
+typedef struct s_cam
+{
+	int		projection;
+	//int		color_pallet;
+	float	scale_factor;
+	float	scale_z;
+	float	move_x;
+	float	move_y;
+	double	alpha;
+	double	beta;
+	double	gamma;
+}	t_cam;
+
 typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
 	t_img	img;
 	t_map	map;
+	t_cam	cam;
 }	t_mlx;
 
 #endif
