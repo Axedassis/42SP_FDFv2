@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:33:15 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/23 17:51:04 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 20:06:43 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ void	init_win(t_mlx *mlx);
 void	init_cam(t_mlx *mlx, t_cam *cam);
 int		destroy_win(t_mlx *mlx);
 int		key_hook(int keysym, t_mlx *mlx);
+void	render_map(t_mlx *mlx);
 
 # endif

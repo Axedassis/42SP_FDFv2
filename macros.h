@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:50:22 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/23 17:30:27 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 20:31:10 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ typedef struct s_point
 	int		color;
 }	t_point;
 
-// typedef struct s_line
-// {
-// 	t_point	start;
-// 	t_point	end;
-// 	float	transform_z;
-// }	t_line;
+typedef struct s_line
+{
+	t_point	start;
+	t_point	end;
+	float	transform_z;
+}	t_line;
 
 typedef struct s_img
 {
@@ -78,7 +78,7 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
-	// t_line	*line;
+	t_line	*line;
 }	t_img;
 
 typedef struct s_map

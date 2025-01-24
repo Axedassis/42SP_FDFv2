@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:32:47 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/01/23 18:11:03 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/01/23 18:24:44 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int main(int argc, char **argv)
 	mlx = init_fdf(map_path);
 	init_win(mlx);
 	init_cam(mlx, &mlx->cam);
+	render_map(mlx);
 	mlx_loop(mlx->mlx);
 	return (0);
 }
